@@ -1,0 +1,30 @@
+#info
+info:
+  app:
+    name: ${spring.application.name}
+    description: Mail Service
+    version: 1.0.0
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+  info:
+    env:
+      enabled: true
+
+#eureka
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+
+server:
+  port: 8003
