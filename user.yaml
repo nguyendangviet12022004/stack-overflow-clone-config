@@ -1,6 +1,39 @@
+#database
 spring:
   datasource:
     url: jdbc:mysql://${USER_DB_HOST:localhost}:${USER_DB_PORT:33061}/${USER_DB_NAME:userdb}
     username: ${USER_DB_USERNAME:root}
     password: ${USER_DB_PASSWORD:password}
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+#info
+info:
+  app:
+    name: ${spring.application.name}
+    description: User Service
+    version: 1.0.0
+
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+  info:
+    env:
+      enabled: true
+
+#eureka
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+
+server:
+  port: 8001
