@@ -1,3 +1,24 @@
+#info
+info:
+  app:
+    name: ${spring.application.name}
+    description: Mail Service
+    version: 1.0.0
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    gateway:
+      enabled: true
+
+  info:
+    env:
+      enabled: true
+
 eureka:
   instance:
     prefer-ip-address: true
