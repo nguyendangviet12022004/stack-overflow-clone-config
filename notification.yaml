@@ -1,0 +1,41 @@
+#database
+spring:
+  mongodb:
+    authentication-database: admin
+    database: ${NOTIFICATION_DB_DATABASE:notificationdb}
+    port: ${NOTIFICATION_DB_PORT:27017}
+    host: ${NOTIFICATION_DB_HOST:localhost}
+    username: ${NOTIFICATION_DB_USERNAME:root}
+    password: ${NOTIFICATION_DB_PASSWORD:password}
+
+#info
+info:
+  app:
+    name: ${spring.application.name}
+    description: Notificaiton Service
+    version: 1.0.0
+
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+  info:
+    env:
+      enabled: true
+
+#eureka
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+
+server:
+  port: 8004
